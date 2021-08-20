@@ -1,8 +1,11 @@
- import { Link } from 'react-router-dom';
+ import { FaMagento } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import {Container} from '../styles/Global' ;
-import {FaMagento} from 'react-icons/fa'
+import { Container } from '../styles/Global';
 
+interface Navprops{
+    click:boolean;
+};
 
 export const Nav =styled.nav`
 background:#fff;
@@ -32,7 +35,7 @@ text-decoration:none;
 font-size:2rem;
 display:flex;
 align-items:center;
-font-family: 'Shadows Into Light', cursive;
+
 `;
 export const NavIcon=styled(FaMagento) `
 margin-right:0.5rem;
@@ -54,27 +57,31 @@ display:none;
 }
 
 `
-export const NavMenu=styled.ul `
+export const NavMenu=styled.ul<Navprops> `
 display:flex;
 align-items:center;
 list-style:none;
 text-align:center;
 
+
 @media screen and (max-width:960px){
+    padding-right:24px;
     display:flex;
     flex-direction:column;
     width:100%;
-    height:90vh;
+    height: ${(props)=> props.click? "50vh" : "0"} ;
     position:absolute;
     top:80px;
-  
+    font-size: 26px;
     opacity:1;
     transition:all 0.5s ease;
-    background:#101522;
+    background:#fff;
+   
 }
 `;
-export const NavItem=styled.li `
-height:80px;
+export const NavItem=styled.li<Navprops> `
+
+height:90px;
 border-bottom:2px solid transparent;
 
 &:hover{
@@ -82,9 +89,10 @@ border-bottom:2px solid transparent;
 
 }
 @media screen and (max-width:960px){
+    display:${(props)=>props.click ? "none": "block" };
     width:100%;
     &:hover{
-    border:none;
+    border-bottom:none;
 }
 
     }
@@ -98,7 +106,6 @@ align-items:center;
 text-decoration:none;
 padding:0.5rem 1rem;
 height:100%;
-
 
 @media screen and (max-width:960px){
     text-align:center;

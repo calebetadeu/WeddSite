@@ -1,12 +1,12 @@
-import React,{useState,useEffect} from 'react'
-import {FaBars,FaTimes} from 'react-icons/fa'
-import {IconContext} from 'react-icons/lib'
-import {Button} from '../styles/Global'
-
-import {Nav,NavbarContainer,NavLogo,NavIcon,MobileIcon,NavMenu,NavItem,NavLinks,NavItemBtn,NavBtnLink} from '../styles/Navbar'
+import React, { useEffect, useState } from 'react'
+import { FaBars, FaTimes } from 'react-icons/fa'
+import { IconContext } from 'react-icons/lib'
+import { MobileIcon, Nav, NavbarContainer, NavIcon, NavItem, NavLinks, NavLogo, NavMenu } from '../styles/Navbar'
 
 
-const Navbar=()=> {
+
+
+ const Navbar =() => {
     const [click,setClick]=useState(false)
     const [button,setButton]=useState(true)
    
@@ -35,24 +35,22 @@ const Navbar=()=> {
             <NavbarContainer>
                <NavLogo to='/'  onClick={handleClick}  >
                    <NavIcon/>
-                Calebe e Sara
+                 Calebe e Sara
                    
                </NavLogo>
-               <MobileIcon  onClick={handleClick} >
-                  <FaTimes />
+               <MobileIcon  onClick={handleClick}   >
+                   {click? <FaBars color="#000" /> : <FaTimes color="#000" />  }
                </MobileIcon>
-               <NavMenu onClick={handleClick} >
-                   <NavItem>
+
+               <NavMenu onClick={handleClick} click={!click} >
+                   <NavItem click={click}  >
                        <NavLinks to='/' onClick={closeMobileMenu} >Inicio</NavLinks>
                    </NavItem>
-                   <NavItem>
-                       <NavLinks to='/About' onClick={closeMobileMenu}  >Sobre Nós</NavLinks>
+                   <NavItem click={click}  >
+                       <NavLinks to='/About' onClick={closeMobileMenu}  >Sobre</NavLinks>
                    </NavItem>
-                   <NavItem>
-                       <NavLinks to='/list' onClick={closeMobileMenu} >Lista de Presente</NavLinks>
-                   </NavItem>
-                   <NavItem>
-                       <NavLinks to='/Contato' onClick={closeMobileMenu} >Local do Casamento</NavLinks>
+                   <NavItem  click={click} >
+                       <NavLinks to='/Services' onClick={closeMobileMenu} >Desafios dos Jeans</NavLinks>
                    </NavItem>
                   
                </NavMenu>
